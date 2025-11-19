@@ -1,0 +1,246 @@
+notes:
+ensure the css of the site is clean (so no black text on black background)
+VS Studio should be similair to the actual VS Code
+
+so i should have a dashboard, and see options to create file, create folder, and import existing folder
+
+Create a fully-featured desktop simulator in the browser from scratch. The simulation must support the Fluxo language (terminal scripting), preinstalled apps, and a fully interactive OS-like experience.
+
+1️⃣ UI & Layout
+
+Dark Mode Theme only
+
+Taskbar at the bottom
+
+Includes a Start Menu / Popup Button
+
+Start Menu lists installed apps
+
+Supports right-click on taskbar icons for Close and Properties
+
+Desktop Area
+
+Supports desktop icons for apps and files
+
+Background image or color
+
+Drag-and-drop icons
+
+Windows
+
+Draggable, resizable, minimizable, closable
+
+Smooth movement animations
+
+Each window has basic properties:
+
+Window ID
+
+Uptime
+
+Status (open, closed, minimized)
+
+Position (x, y)
+
+Size (width, height)
+
+Right-click → Close, Properties
+
+Properties window can show advanced info:
+
+libary, ui, components paths
+
+Player can query these via Fluxo commands
+
+Fluxo scripts can read/write these paths
+
+2️⃣ Apps
+
+Preinstalled apps:
+
+Terminal
+
+Full Fluxo language support
+
+Can read/write system data
+
+Can control windows and workspace via Fluxo
+
+VS.Studio
+
+Simplified Visual Studio Code experience
+
+File explorer, tabs, editor
+
+Full Fluxo syntax support
+
+Syntax highlighting, autocomplete, error detection, export/import modules
+
+Files
+
+Simulate computer files/folders
+
+Stores app files, user files, Fluxo scripts
+
+Drag-and-drop functionality
+
+Right-click → open, properties
+
+Web Browser
+
+Minimal browsing simulation
+
+Can load local or predefined pages
+
+Web Store
+
+Allows installing additional apps
+
+New apps appear on desktop and in Start Menu
+
+3️⃣ Fluxo Integration
+
+Every window/app object is exposed to Fluxo:
+
+local app = window(win-3)
+app.move:(x, y)
+app.resize:(width, height)
+app.close:()
+app.focus:()
+
+
+Fluxo scripts can access desktop paths (libary, ui, components)
+
+Modules can be required via Fluxo:
+
+require("modules/windowTools")
+
+
+Fluxo scripts can read/write window properties and system data
+
+Advanced properties are hidden unless queried in Fluxo
+
+4️⃣ Window & Taskbar Behavior
+
+Dragging windows with smooth animation
+
+Taskbar shows open windows, clicking brings to front
+
+Right-click menu on taskbar icon: Close, Properties
+
+Properties window shows basic + advanced info
+
+Background/desktop icons also have right-click menus (Open, Properties)
+
+5️⃣ System Structure
+
+Desktop Object Model:
+
+desktop.icons → all desktop icons
+
+desktop.background → background image/color
+
+windows → all open windows
+
+installedApps → all apps in system
+
+Window Object:
+
+id, title, x, y, width, height, status, uptime, focused
+
+Methods:
+
+move:(x,y)
+
+resize:(w,h)
+
+close:()
+
+minimize:()
+
+focus:()
+
+6️⃣ File System Simulation
+
+Files and folders represented in a tree structure
+
+Fluxo scripts can navigate and modify files
+
+Apps have dedicated folders in the system
+
+Preloaded files for apps to simulate a working computer environment
+
+7️⃣ Modules & Fluxo Support
+
+Modules can be declared:
+
+module windowTools {
+  export function moveWindow(win, x, y) {
+    win.move:(x, y)
+  }
+}
+
+
+Scripts can require("[filename/directory]") to import module functions
+
+Workspace must support Fluxo script execution inside Terminal and VS.Studio
+
+Module variables and functions must be accessible to other scripts after require
+
+8️⃣ Interaction & Gameplay / Simulation Features
+
+Player can drag desktop icons and windows
+
+Player can open/close/minimize windows
+
+Player can execute Fluxo commands in the terminal
+
+Player can explore system paths, simulate hacking or automation
+
+Installed apps show in Start Menu and can be opened multiple times
+
+9️⃣ Technical Requirements
+
+Frontend Only (no backend required)
+
+Languages: HTML, CSS, JS
+
+Libraries: optional for smooth window dragging, e.g., interact.js or pure JS
+
+Use Monaco Editor for VS.Studio code editor
+
+Smooth window transitions, scalable window stacking
+
+Maintain workspace state (windows, open apps, Fluxo environment, files)
+
+10️⃣ Starter Setup / Files
+
+Preinstall:
+
+Terminal.fxo → Fluxo terminal
+
+VS.Studio.fxo → Fluxo code workspace
+
+Files.fxo → file explorer
+
+Browser.fxo → web browser
+
+WebStore.fxo → app installer
+
+Default desktop icons for each preinstalled app
+
+Sample Fluxo scripts in VS.Studio workspace for testing
+
+Goal
+
+Create a fully-functional browser desktop simulator where the player can:
+
+Drag, open, close, and manage windows
+
+Open apps from taskbar or desktop icons
+
+Access and run Fluxo scripts
+
+Explore system paths and manipulate window properties
+
+Interact with a simulated computer environment realistically
